@@ -5,7 +5,7 @@ import os
 import time
 import datetime
 from preprocessing import Romanization
-from CharCharCNN import CharCharCNN
+from JamoCNN import JamoCNN
 # My own alarm package
 import sys
 sys.path.append('../../')
@@ -63,7 +63,7 @@ with tf.Graph().as_default():
       log_device_placement=FLAGS.log_device_placement)
     sess = tf.Session(config=session_conf)
     with sess.as_default():
-        cnn = CharCharCNN(sequence_max_length=1014, num_quantized_chars=26)
+        cnn = JamoCNN(sequence_max_length=1014, num_quantized_chars=26)
 
         # Define Training procedure
         global_step = tf.Variable(0, name="global_step", trainable=False)
@@ -83,8 +83,8 @@ with tf.Graph().as_default():
 
         # Output directory for models and summaries
         timestamp = str(int(time.time()))
-        directory = "/home/jihyung/Dropbox/DataScience/CharCharCNN/"
-        out_dir = os.path.abspath(os.path.join(directory, "CharCharCNN_romanize", timestamp))
+        directory = "/home/jihyung/Dropbox/DataScience/JamoCNN/"
+        out_dir = os.path.abspath(os.path.join(directory, "JamoCNN_romanize", timestamp))
         print("Writing to {}\n".format(out_dir))
 
         # Summaries for loss and accuracy
@@ -175,4 +175,4 @@ with tf.Graph().as_default():
                 
 # Send finish message (This part should be omitted!)
 alarm = Alarmoon()
-alarm.send_message('Romanize + CharCharCNN is done!')
+alarm.send_message('Romanize + JamoCNN is done!')
