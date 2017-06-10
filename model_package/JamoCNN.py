@@ -3,12 +3,12 @@
 import tensorflow as tf
 
 
-class CharCharCNN(object):
+class JamoCNN(object):
     """
     A CNN for text classification.
     based on the Character-level Convolutional Networks for Text Classification paper.
     """
-    def __init__(self, num_classes=2, filter_sizes=(3,6,9,12,15,18,21), num_filters_per_size=(64,128,128,64,64,32,32), l2_reg_lambda=0.0, sequence_max_length=420, num_quantized_chars=52):
+    def __init__(self, num_classes=2, filter_sizes=(3,6,7,9,12,15,18), num_filters_per_size=(64,128,64,128,128,64,32), l2_reg_lambda=0.0, sequence_max_length=420, num_quantized_chars=52):
 
         # Placeholders for input, output
         self.input_x = tf.placeholder(tf.float32, [None, sequence_max_length, num_quantized_chars, 1], name="input_x")
@@ -129,22 +129,6 @@ class CharCharCNN(object):
                 padding='VALID',
                 name="pool7")
             
-        # ================ Filter 8 ================
-#        with tf.name_scope("conv-maxpool-8"):
-#            filter_shape = [filter_sizes[7], num_quantized_chars, 1, num_filters_per_size[7]]
-#            W = tf.Variable(tf.truncated_normal(filter_shape, stddev=0.01), name="W")
-#            self.W8 = W
-#            b = tf.Variable(tf.truncated_normal(shape=[num_filters_per_size[7]], stddev=0.01), name="b")
-#            conv = tf.nn.conv2d(self.input_x, W, strides=[1, 3, 1, 1], padding="VALID", name="conv8")
-#            h = tf.nn.relu(tf.nn.bias_add(conv, b), name="relu")
-#            height = (sequence_max_length - filter_sizes[7])//3 + 1
-#            pooled_8 = tf.nn.max_pool(
-#                h,
-#                ksize=[1, height, 1, 1],
-#                strides=[1, 1, 1, 1],
-#                padding='VALID',
-#                name="pool8")
-            
         # ================ Layer 7 ================
         with tf.name_scope("stack_max_pools") as scope:
             max_pool_1 = tf.reshape(pooled_1, shape = [-1, num_filters_per_size[0]])
@@ -154,12 +138,11 @@ class CharCharCNN(object):
             max_pool_5 = tf.reshape(pooled_5, shape = [-1, num_filters_per_size[4]])
             max_pool_6 = tf.reshape(pooled_6, shape = [-1, num_filters_per_size[5]])
             max_pool_7 = tf.reshape(pooled_7, shape = [-1, num_filters_per_size[6]])
-#            max_pool_8 = tf.reshape(pooled_8, shape = [-1, num_filters_per_size[7]])
 
 
             tf_max_pools = tf.concat([max_pool_1, max_pool_2, max_pool_3, max_pool_4, max_pool_5, max_pool_6, max_pool_7], axis = 1)
         
-        num_features_total = num_filters_per_size[0] + num_filters_per_size[1] +num_filters_per_size[2] + num_filters_per_size[3] + num_filters_per_size[4] + num_filters_per_size[5]  + num_filters_per_size[6]# + num_filters_per_size[7]
+        num_features_total = num_filters_per_size[0] + num_filters_per_size[1] +num_filters_per_size[2] + num_filters_per_size[3] + num_filters_per_size[4] + num_filters_per_size[5]  + num_filters_per_size[6]
 
         # Fully connected layer 1
         with tf.name_scope("fc-1"):
