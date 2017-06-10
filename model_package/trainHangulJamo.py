@@ -10,10 +10,9 @@ import datetime
 
 # My own alarm package
 from alarmoon import Alarmoon
-from CharCharCNN import CharCharCNN
 from filterVisualization import FilterVisualization
+from JamoCNN import JamoCNN
 from preprocessing import Hangulization
-
 
 filter_vis = FilterVisualization()
 
@@ -67,7 +66,7 @@ with tf.Graph().as_default():
       log_device_placement=FLAGS.log_device_placement)
     sess = tf.Session(config=session_conf)
     with sess.as_default():
-        cnn = CharCharCNN()
+        cnn = JamoCNN()
 
         # Define Training procedure
         global_step = tf.Variable(0, name="global_step", trainable=False)
@@ -87,8 +86,8 @@ with tf.Graph().as_default():
 
         # Output directory for models and summaries
         timestamp = str(int(time.time()))
-        directory = "/home/jihyung/Dropbox/DataScience/CharCharCNN/"
-        out_dir = os.path.abspath(os.path.join(directory, "CharCharCNN_hangulize", timestamp))
+        directory = "/home/jihyung/Dropbox/DataScience/JamoCNN/"
+        out_dir = os.path.abspath(os.path.join(directory, "JamoCNN_hangulize", timestamp))
         print("Writing to {}\n".format(out_dir))
 
         # Summaries for loss and accuracy
@@ -187,4 +186,4 @@ with tf.Graph().as_default():
                 
 # Send finish message (This part should be omitted!)
 alarm = Alarmoon()
-alarm.send_message('Hangulize + CharCharCNN is done!')
+alarm.send_message('Hangulize + JamoCNN is done!')
