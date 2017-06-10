@@ -1,4 +1,4 @@
-# Character-of-Character-level CNN
+# Jamo-level CNN for non-English text classification
 
 focus on the **character-of-character(a.k.a. jamo)**
 
