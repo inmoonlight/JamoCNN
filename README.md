@@ -4,13 +4,26 @@ focus on the **character-of-character(a.k.a. jamo)**
 
 ex) '우리는 실패해도 앞으로 나아가야 합니다' -> 'ㅇㅜㄹㅣㄴㅡㄴㅅㅣㄹㅍㅐㅎㅐㄷㅗㅇㅏㅍㅇㅡㄹㅗㄴㅏㅇㅏㄱㅏㅇㅑㅎㅏㅂㄴㅣㄷㅏ'
 
-### data
+### Model Architecture
+
+![jamocnn](https://github.com/juung/JamoCNN/tree/master/paper/figure/jamocnn.png){: .central-image}
+
+---
+
+### Data
 1. naver movie review 300,000
    * positive review 150,000
    * negative review 150,000
 
-### reference
+### Result
+
+![jamocnn](https://github.com/juung/JamoCNN/tree/master/paper/figure/jamocnn_result.png){: .central-image}
+
+---
+
+### Reference
+
 1. Kim, Yoon. "Convolutional neural networks for sentence classification." In Proceedings of EMNLP 2014.
 2. Zhang, Xiang, Junbo Zhao, and Yann LeCun. "Character-level convolutional networks for text classification." Advances in neural information processing systems. 2015.
 3. Kim, Hyunjoong. hangle.py https://github.com/lovit/soynlp
-4. based on ideas from https://github.com/dennybritz/cnn-text-classification-tf
+4. python code is based on from https://github.com/dennybritz/cnn-text-classification-tf
