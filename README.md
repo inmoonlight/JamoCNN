@@ -6,7 +6,7 @@ ex) '우리는 실패해도 앞으로 나아가야 합니다' -> 'ㅇㅜㄹㅣ�
 
 ### Model Architecture
 
-![jamocnn](./paper/figure/jamocnn.png){: .central-image}
+<img src="./paper/figure/jamocnn.png">
 
 ---
 
