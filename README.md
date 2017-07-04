@@ -6,7 +6,7 @@ ex) '우리는 실패해도 앞으로 나아가야 합니다' -> 'ㅇㅜㄹㅣ�
 
 ### Model Architecture
 
-![jamocnn](https://github.com/juung/JamoCNN/tree/master/paper/figure/jamocnn.png){: .central-image}
+![jamocnn](./paper/figure/jamocnn.png){: .central-image}
 
 ---
 
@@ -17,7 +17,7 @@ ex) '우리는 실패해도 앞으로 나아가야 합니다' -> 'ㅇㅜㄹㅣ�
 
 ### Result
 
-![jamocnn](https://github.com/juung/JamoCNN/tree/master/paper/figure/jamocnn_result.png){: .central-image}
+<img src="./paper/figure/jamocnn_result.png" width="350">
 
 ---
 
